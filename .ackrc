@@ -1,0 +1,13 @@
+--type-add
+html=.haml,.ejs
+--type-add
+css=.sass,.scss,.less
+--type-add
+js=.coffee
+--type-set
+rabl=.rabl
+--type-add
+vb=.cls,.bas,.frm
+
+--ignore-dir=coverage
+--ignore-dir=tmp
