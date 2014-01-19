@@ -40,6 +40,7 @@ exe 'source ' . g:janus_vim_path . '/core/plugins.vim'
 " Load all groups, custom dir, and janus core
 call janus#load_pathogen()
 execute pathogen#infect('/Users/alric/.vim/janus/vim/tools/{}')
+execute pathogen#infect()
 
 " .vimrc.after is loaded after the plugins have loaded
 "

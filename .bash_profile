@@ -48,8 +48,7 @@ PROMPT_COMMAND=print_before_the_prompt
 
 PS1='->'
 
-export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:$HOME/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:$HOME/bin:$PATH"
 
 #Add working-directory memory
 #Note: this may conflict with other tools that hijack CD, e.g., RVM
@@ -70,7 +69,8 @@ eval "$(rbenv init -)"
 
 #Combine rake db commands for both dev and test environments.
 alias bake="bundle exec rake"
-alias migrate=" echo 'rake db:migrate && rake db:migrate RAILS_ENV=test' && rake db:migrate && rake db:migrate RAILS_ENV=test";
+alias buard=" echo 'bundle exec guard' && bundle exec guard"
+alias migrate=" echo 'bake db:migrate && bake db:migrate RAILS_ENV=test' && bake db:migrate && bake db:migrate RAILS_ENV=test";
 alias seed=" echo 'rake db:seed && rake db:seed RAILS_ENV=test' && rake db:seed && rake db:seed RAILS_ENV=test";
 alias rollback=" echo 'rake db:rollback && rake db:rollback RAILS_ENV=test' && rake db:rollback && rake db:rollback RAILS_ENV=test";
 alias annotate="echo 'bundle exec annotate --exclude tests,fixtures' && bundle exec annotate --exclude tests,fixtures";
@@ -82,6 +82,7 @@ alias ga="echo 'git add -A' && git add -A";
 alias gm="echo 'git commit -m' && git commit -m";
 alias gf="echo 'git fetch' && git fetch";
 alias grom="echo 'git rebase origin/master' && git rebase origin/master";
+alias grod="echo 'git rebase origin/development' && git rebase origin/development";
 alias gdc="echo 'git difftool origin/master..HEAD' && git difftool origin/master..HEAD";
 alias gsc="echo 'git log origin/master..HEAD' && git log origin/master..HEAD";
 alias gfsm="echo 'git submodule -q foreach git pull -q origin master' && git submodule -q foreach git pull -q origin master"; #Updates all submodules
@@ -93,3 +94,6 @@ alias file_types='echo "find . -type f | perl -ne '"'"'print $1 if m/\.([^.\/]+)
 # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 export PATH
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$HOME/bin:$PATH"
